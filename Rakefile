@@ -1,9 +1,11 @@
 require 'bundler/gem_tasks'
+require 'rdoc/task'
 
-  require 'rdoc/task'
-  RDoc::Task.new do |rdoc|
-    rdoc.rdoc_dir = 'rdoc'
-    rdoc.title = 'NNTP-Client'
-    rdoc.rdoc_files.include('lib/**/*.rb')
-  end
+RDoc::Task.new do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = 'NNTP-Client'
+  rdoc.main = 'README.rdoc'
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.rdoc_files.include('README.rdoc', 'lib/**/*.rb')
+end
 
