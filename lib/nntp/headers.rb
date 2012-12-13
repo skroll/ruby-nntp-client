@@ -68,13 +68,19 @@ module NNTP
     # Where the article was filed by the news server.
     XREF           = 'Xref'
 
+    # Number of bytes of the article.
+    BYTES          = 'Bytes'
+
+    # Number of liens in the article.
+    LINES          = 'Lines'
+
     # List of mandatory headers for an article.
     MANDATORY = [DATE, FROM, MESSAGE_ID, NEWSGROUPS, PATH, SUBJECT]
 
     # List of optional headers for an article.
     OPTIONAL = [APPROVED, ARCHIVE, CONTROL, DISTRIBUTION, EXPIRES,
       FOLLOWUP_TO, INJECTION_DATE, INJECTION_INFO, ORGANIZATION, REFERENCES,
-      SUMMARY, SUPERSEDES, USER_AGENT, XREF]
+      SUMMARY, SUPERSEDES, USER_AGENT, XREF, BYTES, LINES]
 
     class << self
       # Convert a header string to a Ruby symbol.
@@ -93,7 +99,7 @@ module NNTP
     FROM_SYM_TABLE = {}
 
     (MANDATORY + OPTIONAL).each do |header|
-      header_symbol = header.sub(/-/, '_').downcase.to_sym
+      header_symbol = header.sub(/-/, '_').sub(/:/, '_').downcase.to_sym
       TO_SYM_TABLE[header] = header_symbol
       FROM_SYM_TABLE[header_symbol] = header
     end
