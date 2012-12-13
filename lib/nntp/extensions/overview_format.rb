@@ -10,7 +10,9 @@ module NNTP
         header_hash = { message_id: header_items[0].to_i }
 
         @overview_fmt.each_with_index do |header, i|
-          header_hash[header.chop.downcase.to_sym] = header_items[i + 1]
+          header_symbol = NNTP::Headers.to_symbol(header.chop)
+          header_symbol = header if header_symbol.nil?
+          header_hash[header_symbol] = header_items[i + 1]
         end
 
         header_hash
