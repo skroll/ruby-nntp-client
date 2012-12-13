@@ -11,7 +11,7 @@ module NNTP
 
     # Unique message identifer.
     MESSAGE_ID = 'Message-ID'
-  
+
     # Newsgroups that the article is posted to.
     NEWSGROUPS = 'Newsgroups'
 
@@ -75,6 +75,21 @@ module NNTP
     OPTIONAL = [APPROVED, ARCHIVE, CONTROL, DISTRIBUTION, EXPIRES,
       FOLLOWUP_TO, INJECTION_DATE, INJECTION_INFO, ORGANIZATION, REFERENCES,
       SUMMARY, SUPERSEDES, USER_AGENT, XREF]
+  end
+end
+
+module NNTP
+  module Headers
+    # Contains helper methods to parsing date headers.
+    module Date
+      class << self
+        # Parses a date/time string from a header and converts it into a
+        # Ruby DateTime object.
+        def parse(s)
+          DateTime.rfc2822(s)
+        end
+      end
+    end
   end
 end
 
