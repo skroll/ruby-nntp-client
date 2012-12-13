@@ -1,5 +1,6 @@
 require 'nntp/version'
 require 'nntp/errors'
+require 'nntp/headers'
 require 'nntp/client'
 
 # == What is This Library?
