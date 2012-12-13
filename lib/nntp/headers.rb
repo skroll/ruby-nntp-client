@@ -75,6 +75,28 @@ module NNTP
     OPTIONAL = [APPROVED, ARCHIVE, CONTROL, DISTRIBUTION, EXPIRES,
       FOLLOWUP_TO, INJECTION_DATE, INJECTION_INFO, ORGANIZATION, REFERENCES,
       SUMMARY, SUPERSEDES, USER_AGENT, XREF]
+
+    class << self
+      # Convert a header string to a Ruby symbol.
+      def to_symbol(header)
+        TO_SYM_TABLE[header]
+      end
+
+      # Convert a Ruby symbol to a header string.
+      def from_symbol(header)
+        FROM_SYM_TABLE[header]
+      end
+    end
+
+    private
+    TO_SYM_TABLE = {}
+    FROM_SYM_TABLE = {}
+
+    (MANDATORY + OPTIONAL).each do |header|
+      header_symbol = header.sub(/-/, '_').downcase.to_sym
+      TO_SYM_TABLE[header] = header_symbol
+      FROM_SYM_TABLE[header_symbol] = header
+    end
   end
 end
 
