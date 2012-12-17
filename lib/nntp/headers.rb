@@ -1,3 +1,5 @@
+require 'time'
+
 module NNTP
   # Contains constants and methods for use in parsing headers for articles.
   module Headers
@@ -114,7 +116,7 @@ module NNTP
         # Parses a date/time string from a header and converts it into a
         # Ruby DateTime object.
         def parse(s)
-          DateTime.rfc2822(s)
+          Time.rfc2822(s)
         end
       end
     end
