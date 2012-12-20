@@ -1,5 +1,5 @@
 require 'buffered_io'
-require 'nntp/line_buffer'
+require 'nntp/client/line_buffer'
 
 # Extend the String class to add some functionality to simplify the logic
 # in NNTP::Protocol.
@@ -66,7 +66,7 @@ module NNTP
       # message headers. This method automatically strips the terminator from
       # the list and does not return it.
       def readlines
-        line_buffer = ::NNTP::LineBuffer.new(@compressed)
+        line_buffer = ::NNTP::Client::LineBuffer.new(@compressed)
 
         while true
           line = @io.readline(false)
