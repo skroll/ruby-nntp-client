@@ -1,7 +1,10 @@
 require 'socket'
 require 'zlib'
 require 'timeout'
-require 'nntp/protocol'
+require 'nntp/client/version'
+require 'nntp/client/errors'
+require 'nntp/client/headers'
+require 'nntp/client/protocol'
 require 'nntp/client/commands'
 
 module NNTP
@@ -72,11 +75,11 @@ module NNTP
     # 
     # This method may raise:
     # 
-    # * NNTP::AuthenticationError
-    # * NNTP::FatalError
-    # * NNTP::ServerBusy
-    # * NNTP::SyntaxError
-    # * NNTP::UnknownError
+    # * NNTP::Client::AuthenticationError
+    # * NNTP::Client::FatalError
+    # * NNTP::Client::ServerBusy
+    # * NNTP::Client::SyntaxError
+    # * NNTP::Client::UnknownError
     # * IOError
     # * TimeoutError
     #
@@ -112,11 +115,11 @@ module NNTP
     # 
     # This method may raise:
     # 
-    # * NNTP::AuthenticationError
-    # * NNTP::FatalError
-    # * NNTP::ServerBusy
-    # * NNTP::SyntaxError
-    # * NNTP::UnknownError
+    # * NNTP::Client::AuthenticationError
+    # * NNTP::Client::FatalError
+    # * NNTP::Client::ServerBusy
+    # * NNTP::Client::SyntaxError
+    # * NNTP::Client::UnknownError
     # * IOError
     # * TimeoutError
 
@@ -165,7 +168,7 @@ module NNTP
         TCPSocket.open(self.hostname, self.port)
       end
 
-      @protocol = ::NNTP::Protocol.new(@socket)
+      @protocol = ::NNTP::Client::Protocol.new(@socket)
 
       @protocol.read_response
       @started = true
