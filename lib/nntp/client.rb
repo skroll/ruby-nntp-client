@@ -75,11 +75,11 @@ module NNTP
     # 
     # This method may raise:
     # 
-    # * NNTP::AuthenticationError
-    # * NNTP::FatalError
-    # * NNTP::ServerBusy
-    # * NNTP::SyntaxError
-    # * NNTP::UnknownError
+    # * NNTP::Client::AuthenticationError
+    # * NNTP::Client::FatalError
+    # * NNTP::Client::ServerBusy
+    # * NNTP::Client::SyntaxError
+    # * NNTP::Client::UnknownError
     # * IOError
     # * TimeoutError
     #
@@ -115,11 +115,11 @@ module NNTP
     # 
     # This method may raise:
     # 
-    # * NNTP::AuthenticationError
-    # * NNTP::FatalError
-    # * NNTP::ServerBusy
-    # * NNTP::SyntaxError
-    # * NNTP::UnknownError
+    # * NNTP::Client::AuthenticationError
+    # * NNTP::Client::FatalError
+    # * NNTP::Client::ServerBusy
+    # * NNTP::Client::SyntaxError
+    # * NNTP::Client::UnknownError
     # * IOError
     # * TimeoutError
 

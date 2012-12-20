@@ -2,7 +2,7 @@ require 'buffered_io'
 require 'nntp/client/line_buffer'
 
 # Extend the String class to add some functionality to simplify the logic
-# in NNTP::Protocol.
+# in NNTP::Client::Protocol.
 class String # :nodoc:
   NNTP_TERMINATOR = ".\r\n"
 
@@ -32,11 +32,11 @@ module NNTP
       # The terminator used when returning a data list from the NNTP server.
       TERMINATOR = ".\r\n" # :nodoc:
 
-      # Creates a new NNTP::Protocol object that manipulates a TCPSocket
-      # object.
+      # Creates a new NNTP::Client::Protocol object that manipulates a
+      # TCPSocket object.
       #
       # :call-seq:
-      #   NNTP::Protocol.new(socket) -> protocol
+      #   NNTP::Client::Protocol.new(socket) -> protocol
       #
       def initialize(socket)
         @io = ::BufferedIO::IOBuffer.new(socket)
@@ -116,11 +116,12 @@ module NNTP
         raise exception, response
       end
 
-      # Define a critical section that should be executed by the NNTP::Protocol
-      # object. This is used in cases where an entire series of commands need
-      # to be executed, and if any fail, then to stop running. This simplifies
-      # code in NNTP::Client, so that multi-line commands do not need to be
-      # split up and have their individual error codes checked.
+      # Define a critical section that should be executed by the
+      # NNTP::Client::Protocol object. This is used in cases where an entire
+      # series of commands need to be executed, and if any fail, then to stop
+      # running. This simplifies code in NNTP::Client, so that multi-line
+      # commands do not need to be split up and have their individual error
+      # codes checked.
       #
       # === Example
       #

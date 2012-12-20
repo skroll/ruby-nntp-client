@@ -33,7 +33,7 @@ module NNTP
           header_hash = { id: header_items[0].to_i }
 
           @overview_fmt.each_with_index do |header, i|
-            header_symbol = NNTP::Headers.to_symbol(header.chop)
+            header_symbol = NNTP::Client::Headers.to_symbol(header.chop)
             header_symbol = header if header_symbol.nil?
             header_hash[header_symbol] = header_items[i + 1]
           end

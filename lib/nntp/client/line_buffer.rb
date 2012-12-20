@@ -75,9 +75,9 @@ module NNTP
     class AsciiLineBuffer < LineBufferBase # :nodoc:
     end
 
-    # The NNTP::LineBuffer is actually just a factory proxy that constructs
-    # a new object derived from NNTP::LineBufferBase depending on the options
-    # passed to LineBuffer.new().
+    # The NNTP::Client::LineBuffer is actually just a factory proxy that
+    # constructs a new object derived from NNTP::Client::LineBufferBase
+    # depending on the options passed to LineBuffer.new().
     class LineBuffer # :nodoc:
       def self.new(compressed = false)
         if compressed
