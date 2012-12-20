@@ -3,9 +3,6 @@ require 'nntp/errors'
 require 'nntp/headers'
 require 'nntp/client'
 
-# == What is This Library?
-#
-module NNTP
+module NNTP # :nodoc:
 end
-
 
