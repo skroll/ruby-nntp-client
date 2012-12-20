@@ -128,8 +128,6 @@ module NNTP
         begin
           do_start
           return yield(self)
-        rescue Exception => e
-          puts e
         ensure
           do_finish
         end
