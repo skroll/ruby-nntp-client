@@ -96,11 +96,14 @@ module NNTP
       stat, message = split_response(response)
       stat_i = stat.to_i
 
+      # If the response contains the string "COMPRESS=GZIP" then the
+      # following payload will be compressed using gzip.
       @compressed = /COMPRESS=GZIP/.match(message) ? true : false
 
-      return make_response_hash(stat_i, message) if /\A1/ === stat
-      return make_response_hash(stat_i, message) if /\A2/ === stat
-      return make_response_hash(stat_i, message) if allow_continue and /\A[35]/ === stat
+      response = make_response_hash(stat_i, message)
+      return response if /\A1/ === stat
+      return response if /\A2/ === stat
+      return response if allow_continue and /\A[35]/ === stat
       exception = case stat
         when /\A48/  then AuthenticationError
         when /\A4/   then ServerBusy
@@ -109,7 +112,7 @@ module NNTP
       else
         UnknownError
       end
-      raise exception, make_response_hash(stat_i, message)
+      raise exception, response
     end
 
     # Define a critical section that should be executed by the NNTP::Protocol
