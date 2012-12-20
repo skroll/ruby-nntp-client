@@ -1,7 +1,7 @@
 require 'socket'
 require 'zlib'
 require 'timeout'
-require 'nntp/protocol'
+require 'nntp/client/protocol'
 require 'nntp/client/commands'
 
 module NNTP
@@ -125,6 +125,8 @@ module NNTP
         begin
           do_start
           return yield(self)
+        rescue Exception => e
+          puts e
         ensure
           do_finish
         end
@@ -165,7 +167,7 @@ module NNTP
         TCPSocket.open(self.hostname, self.port)
       end
 
-      @protocol = ::NNTP::Protocol.new(@socket)
+      @protocol = ::NNTP::Client::Protocol.new(@socket)
 
       @protocol.read_response
       @started = true
