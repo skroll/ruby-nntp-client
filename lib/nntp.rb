@@ -1,5 +1,5 @@
 require 'nntp/client/version'
-require 'nntp/errors'
+require 'nntp/client/errors'
 require 'nntp/headers'
 require 'nntp/client'
 
