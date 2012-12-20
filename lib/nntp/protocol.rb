@@ -1,5 +1,5 @@
+require 'buffered_io'
 require 'nntp/line_buffer'
-require 'nntp/bufferedio'
 
 # Extend the String class to add some functionality to simplify the logic
 # in NNTP::Protocol.
@@ -38,7 +38,7 @@ module NNTP
     #   NNTP::Protocol.new(socket) -> protocol
     #
     def initialize(socket)
-      @io = ::NNTP::BufferedIO.new(socket)
+      @io = ::BufferedIO::IOBuffer.new(socket)
       @compressed = false
     end
 
