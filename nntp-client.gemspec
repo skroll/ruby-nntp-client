@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'nntp/version'
+require 'nntp/client/version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'nntp-client'
-  gem.version       = NNTP::VERSION
+  gem.version       = NNTP::Client::VERSION
   gem.authors       = ['Scott M. Kroll']
   gem.email         = ['skroll@gmail.com']
   gem.description   = %q{A simple NNTP client library}
