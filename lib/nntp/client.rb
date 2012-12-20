@@ -1,6 +1,9 @@
 require 'socket'
 require 'zlib'
 require 'timeout'
+require 'nntp/client/version'
+require 'nntp/client/errors'
+require 'nntp/client/headers'
 require 'nntp/client/protocol'
 require 'nntp/client/commands'
 
