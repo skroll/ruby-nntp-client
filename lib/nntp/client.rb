@@ -5,6 +5,7 @@ require 'nntp/protocol'
 require 'nntp/client/commands'
 
 module NNTP
+  # \Client interface to an \NNTP server.
   class Client
     # The hostname of the \NNTP server.
     attr_reader :hostname
